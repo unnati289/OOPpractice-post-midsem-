@@ -1,0 +1,4 @@
+Objective: Get hands-on experience with wait() and notify() to alternate actions.
+Description: Implement two threads (Ping and Pong) where each thread alternately prints “Ping” and “Pong.” Each thread should wait for the other to complete before it can proceed.
+Details: Use a shared lock object and call wait() and notify() to ensure the threads take turns.
+Key Learning: Learn to alternate actions between two threads in a synchronized manner.

@@ -10,10 +10,10 @@ class Player implements Runnable {
     public void run() {
         
         
-            synchronized (d.getLock()) {
+            synchronized (d) {
                 while (!d.getPChance()) {
                     try {
-                        d.getLock().wait();
+                        d.wait();
                     } catch (InterruptedException e) {
                         System.err.println("InterruptedException: " + e.getMessage());
                     }
@@ -21,9 +21,9 @@ class Player implements Runnable {
                 d.setResult(rand.nextInt(2));
                 d.setMChance(true);
                 d.setPChance(false);
-                d.getLock().notify();
+                d.notify();
                 try {
-                    Thread.sleep(10); // Sleep for 1 second (1000 milliseconds)
+                    Thread.sleep(100); 
                 } catch (InterruptedException e) {
                     System.err.println("InterruptedException while sleeping: " + e.getMessage());
                 }

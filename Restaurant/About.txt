@@ -1,0 +1,7 @@
+Objective: Understand wait() and notifyAll() with multiple producers and consumers.
+Description: Create a simulation with multiple Cook threads (producers) preparing dishes and multiple Waiter threads (consumers) serving dishes. Use a shared queue to represent ready dishes.
+Details: Implement a system where cooks wait if the queue is full and notify waiters once a dish is ready. Waiters should wait if the queue is empty and be notified when a dish is available.
+Key Learning: Learn how multiple producers and consumers interact and coordinate using synchronized methods and wait/notifyAll.
+
+It is clear that I will create a lock on qArray
+

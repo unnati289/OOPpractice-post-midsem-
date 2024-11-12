@@ -9,12 +9,12 @@ public class Monitor implements Runnable{
     private int heads;
     public Monitor(Data d){this.d=d;};
     public void run(){
-        int n=this.d.getNop();
-        while(n>0){
-            synchronized(d.getLock()){
-                if(!this.d.getMChance()){
+        int tosses=this.d.getNop();
+        while(tosses>0){
+            synchronized(d){
+                while(!this.d.getMChance()){
                     try{
-                        d.getLock().wait();
+                        d.wait();
                     }catch (InterruptedException e) {
                         System.err.println("InterruptedException: " + e.getMessage());
                     }
@@ -23,14 +23,14 @@ public class Monitor implements Runnable{
                 if(d.getResult() == 0) tails++;	else heads++;
                 d.setMChance(false);
                 d.setPChance(true);
-                d.getLock().notify();
+                d.notifyAll();
                 try {
-                    Thread.sleep(10000);  // Sleep for 0.5 second (500 milliseconds)
+                    Thread.sleep(100);  // Sleep for 0.5 second (500 milliseconds)
                 } catch (InterruptedException e) {
                     System.err.println("InterruptedException while sleeping: " + e.getMessage());
                 }
             }
-            n--;
+            tosses--;
         }
         PrintWriter p=null;
         try{

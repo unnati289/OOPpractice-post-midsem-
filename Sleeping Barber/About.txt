@@ -1,0 +1,14 @@
+The problem involves a barber shop with:
+
+A barber.
+A barber chair.
+A waiting area with a limited number of chairs for customers.
+The rules:
+
+If there are no customers, the barber sleeps.
+When a customer arrives:
+If the barber is asleep, the customer wakes the barber.
+If the barber is cutting hair, and there are empty chairs in the waiting area, the customer waits.
+If the waiting area is full, the customer leaves.
+Only one customer can sit in the barber's chair at a time.
+When the barber finishes cutting a customer's hair, the next waiting customer (if any) is served.
